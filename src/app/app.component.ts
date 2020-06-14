@@ -8,5 +8,8 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   title = 'COVID frontend';
-  constructor(private router: Router){}
+  router: string;
+  constructor(private route: Router){
+    this.router = route.url;
+  }
 }
