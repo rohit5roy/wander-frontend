@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div style="display: block;">
+  <div class="col-12 h-25">
+
+    <canvas baseChart  *ngIf="isDataAvailable"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [chartType]="'line'"></canvas>
+  </div>
+</div>

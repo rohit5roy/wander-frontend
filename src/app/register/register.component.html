@@ -6,7 +6,7 @@
           <h3 class="text-center">Register</h3>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="First Name" formControlName="firstname">
+              <input type="text" matInput placeholder="First Name" formControlName="firstname" >
               <mat-error *ngIf="data.firstname.errors?.required">First Name is required</mat-error>
             </mat-form-field>
             <mat-form-field class="w-100">
@@ -14,11 +14,15 @@
               <mat-error *ngIf="data.lastname.errors?.required">Last Name is required</mat-error>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Username" formControlName="username">
+              <input type="email" matInput placeholder="E-Mail" formControlName="email">
+              <mat-error *ngIf="data.email.errors?.required">Email is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="text" matInput placeholder="Username" formControlName="username" minlength="8">
               <mat-error *ngIf="data.username.errors?.required">Username is required</mat-error>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="password" matInput placeholder="Password" formControlName="password">
+              <input type="password" matInput placeholder="Password" formControlName="password" minlength="10">
               <mat-error *ngIf="data.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
             <div class="mt-4">
