@@ -1,10 +1,63 @@
-<div style="display: block;">
-  <div class="col-12 h-25">
+<div class="container">
+  <div class="d-flex justify-content-around p-xl-5">
+    <mat-card class="col-3 bg-warning font-weight-bold text-white shadow-lg text-center">Total cases:  {{total}}</mat-card>
+    <mat-card class="col-3 bg-danger font-weight-bold text-white shadow-lg text-center">Active cases:  {{active}}</mat-card>
+    <mat-card class="col-3 bg-success font-weight-bold text-white shadow-lg text-center">Cured cases:  {{cured}}</mat-card>
+  </div>
+  <div class="d-flex justify-content-center" style="display: block;">
+    <div class="col-10 h-25 align-middle">
+      <canvas class="" baseChart  *ngIf="isDataAvailable"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [chartType]="'line'"></canvas>
+    </div>
+  </div>
+  <div class="col-12 flex-fill mt-5">
+    <mat-card class="col-12 font-weight-bold text-white shadow-lg d-flex justify-content-between" style="background-color: #ab47bc">
+      <span class="mt-4 ml-4">State wise scenario</span>
+      <mat-form-field class="col-4 d-flex justify-content-center ">
+        <mat-label class="text-white">Filter</mat-label>
+        <input class="text-white h-100" matInput (keyup)="applyFilter($event)" placeholder="Ex. Kar">
+      </mat-form-field>
+    </mat-card>
 
-    <canvas baseChart  *ngIf="isDataAvailable"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [chartType]="'line'"></canvas>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 col-12">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="No">
+        <th mat-header-cell *matHeaderCellDef class="font-weight-bolder "> No. </th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{i}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef class="font-weight-bolder "> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Active">
+        <th mat-header-cell *matHeaderCellDef class="font-weight-bolder "> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Cured">
+        <th mat-header-cell *matHeaderCellDef> Cured </th>
+        <td mat-cell *matCellDef="let element"> {{element.cured}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Deaths">
+        <th mat-header-cell *matHeaderCellDef class="font-weight-bolder "> Deaths </th>
+        <td mat-cell *matCellDef="let element"> {{element.death}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Total">
+        <th mat-header-cell *matHeaderCellDef class="font-weight-bolder "> Total </th>
+        <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </div>
 </div>

@@ -4,6 +4,8 @@ export class GlobalConstants {
   public static loginPath = '/login';
   public static registrationPath = '/register';
   public static userOnly = '/api/useronly';
-  public static  countryDataDateWisePath = '/country-wise';
+  public static  countryDataDateWisePath = '/api/country-wise';
+  public static countrySummaryPath = '/api/country-summary';
+  public static stateSummaryPath = '/api/state-data-list';
 
 }

@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { AuthInterceptor } from './utils/http-interceptor';
 import { ChartsModule } from 'ng2-charts';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     MatToolbarModule,
     MatInputModule,
-    ChartsModule
+    ChartsModule,
+    MatTableModule
   ],
   providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

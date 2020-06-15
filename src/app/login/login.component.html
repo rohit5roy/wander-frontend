@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center h-100">
+<div class="d-flex align-items-center h-100" style="background-image: url('./assets/cool-background.png')">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm-5">
@@ -6,7 +6,8 @@
           Username or password is incorrect
         </div>
         <mat-card>
-          <h3 class="text-center">Login</h3>
+          <mat-card class="col-12 font-weight-bolder text-white shadow-lg text-center mt-0"  style="background-color: #007bff; margin-top: -3rem; margin-bottom: 2rem">LOGIN</mat-card>
+
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="w-100">
               <input type="text" matInput placeholder="Username" formControlName="username">
@@ -17,7 +18,7 @@
               <mat-error *ngIf="data.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
             <div class="form-group mt-4">
-              <button mat-raised-button color="primary">Login</button>
+              <button mat-raised-button style="background-color: #007bff" class="text-white font-weight-bold">Login</button>
               <a [routerLink]="['/register']" class="ml-2" mat-button color="primary">Register</a>
             </div>
           </form>

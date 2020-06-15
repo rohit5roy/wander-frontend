@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,10 +6,14 @@ import {Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'COVID frontend';
-  router: string;
+  isHome: boolean;
   constructor(private route: Router){
-    this.router = route.url;
+  }
+
+  ngOnInit() {
+    console.log( window.location.href);
+    this.isHome = (window.location.href).includes('/home');
   }
 }
